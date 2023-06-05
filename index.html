@@ -5,14 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Starbucks Landing Page</title>
+    <title>Responsive Starbucks Landing Page</title>
   </head>
   <body>
     <section>
       <div class="circle"></div>
       <header>
         <a href="#"><img src="logo.png" class="logo" alt="" /></a>
-        <ul>
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
           <li><a href="#">Home</a></li>
           <li><a href="#">Menu</a></li>
           <li><a href="#">What's New</a></li>
@@ -33,7 +34,7 @@
         </div>
       </div>
       <ul class="thumb">
-        <li><img src="thumb1.png" alt="" onclick="imgSlider('img1.png');changeCircleColor('#3dffae')" /></li>
+        <li><img src="thumb1.png" alt="" onclick="imgSlider('img1.png');changeCircleColor('#017143')" /></li>
         <li><img src="thumb2.png" alt="" onclick="imgSlider('img2.png');changeCircleColor('#eb7495')" /></li>
         <li><img src="thumb3.png" alt="" onclick="imgSlider('img3.png');changeCircleColor('#d752b1')" /></li>
       </ul>
@@ -59,6 +60,21 @@
         const circle = document.querySelector(".circle");
         circle.style.background = color;
       }
+
+      function toggleMenu() {
+        let menuToggle = document.querySelector(".toggle");
+        let navigation = document.querySelector(".navigation");
+        menuToggle.classList.toggle("active");
+        navigation.classList.toggle("active");
+      }
+
+      //fungsi untuk mengaktifkan toggleMenu di ul saat memiliki class active
+      const ulElement = document.querySelector("ul.navigation");
+      ulElement.addEventListener("click", function () {
+        if (ulElement.classList.contains("active")) {
+          toggleMenu();
+        }
+      });
     </script>
   </body>
 </html>
